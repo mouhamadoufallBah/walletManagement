@@ -146,3 +146,21 @@ function handleWithdraw(array &$wallets, array &$transactions): void
         echo "Erreur : Solde insuffisant pour couvrir le retrait et les frais.\n\n";
     }
 }
+
+function handleListTransactions(array $transactions, array $wallets): void
+{
+    echo "\n==================================================================\n";
+    echo "Client \t\t | Type \t | Montant \t | Frais \n";
+    echo "==================================================================\n";
+
+    $list = getAllTransactions($transactions);
+
+    foreach ($list as $transaction) {
+        $clientId = $transaction['idClient'];
+        $clientName = $wallets[$clientId]['client'];
+        
+        echo "{$clientName} \t\t | {$transaction['type']} \t | {$transaction['montant']} CFA \t | {$transaction['frais']} CFA\n";
+    }
+    
+    echo "==================================================================\n\n";
+}
