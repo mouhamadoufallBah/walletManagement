@@ -77,3 +77,35 @@ function handleCreateWallet(array &$wallets): void
     createWallet($newWallet, $wallets);
     echo "=== Wallet créé avec succès ! ===\n\n";
 }
+
+function handleDeposit(array &$wallets, array &$transactions): void
+{
+    echo "\n============== OPÉRATION DE DÉPÔT ==============\n";
+
+    do {
+        $phone = trim(readline("Veuillez saisir le numéro de téléphone du bénéficiaire : "));
+
+        if (isRequiredFieldEmpty($phone)) {
+            echo "Erreur : Le numéro de téléphone est obligatoire.\n";
+            continue;
+        }
+        if (isWalletValueUnique($phone, 'telephone', $wallets)) {
+            echo "Erreur : Aucun wallet n'est associé à ce numéro de téléphone.\n";
+            continue;
+        }
+        break;
+    } while (true);
+
+    do {
+        $amount = trim(readline("Veuillez saisir le montant à déposer : "));
+
+        if ($amount === "" || !is_numeric($amount) || !isAmountStrictlyPositive((float)$amount)) {
+            echo "Erreur : Le montant doit être un nombre strictement positif.\n";
+            continue;
+        }
+        break;
+    } while (true);
+
+    executeDeposit($phone, (float)$amount, $wallets, $transactions);
+    echo "=== Dépôt effectué avec succès ! ===\n\n";
+}
