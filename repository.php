@@ -35,3 +35,8 @@ function getAllTransactions(array $transactions): array
 {
     return $transactions;
 }
+
+function getAllWallets(array $wallets): array
+{
+    return $wallets;
+}
