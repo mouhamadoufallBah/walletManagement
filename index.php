@@ -1,7 +1,23 @@
 <?php
+require_once 'repository.php';
+require_once 'validators.php';
+require_once 'services.php';
+require_once 'controller.php';
 
-// Données initiales pour simulation (vides ou démo pour le moment)
-$wallets = [];
+$wallets = [
+    [
+        'client' => 'Idy',
+        'telephone' => '771234567',
+        'code' => '1334',
+        'solde' => '0'
+    ],
+    [
+        'client' => 'Issa',
+        'telephone' => '771234537',
+        'code' => '1364',
+        'solde' => '0'
+    ]
+];
 $transactions = [];
 
 do {
@@ -16,7 +32,7 @@ do {
 
     switch ($choix) {
         case '1':
-            echo "Option 'Créer Wallet' sélectionnée (Fonctionnalité en cours de développement...)\n\n";
+            handleCreateWallet($wallets);
             break;
         case '2':
             echo "Option 'Faire Dépôt' sélectionnée (Fonctionnalité en cours de développement...)\n\n";
@@ -31,9 +47,7 @@ do {
             echo "Au revoir !\n";
             break;
         default:
-            // RG 0.2 : Gestion des erreurs de saisie
             echo "Choix invalide, veuillez réessayer.\n\n";
             break;
     }
-
 } while ($choix !== '0');
