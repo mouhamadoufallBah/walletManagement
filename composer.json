@@ -1,0 +1,15 @@
+{
+    "name": "app/wallet-management",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": ""
+        },
+        "files": [
+            "repository.php",
+            "validators.php",
+            "services.php",
+            "controller.php"
+        ]
+    }
+}

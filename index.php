@@ -1,8 +1,5 @@
 <?php
-require_once 'repository.php';
-require_once 'validators.php';
-require_once 'services.php';
-require_once 'controller.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 use function App\Controller\handleCreateWallet;
 use function App\Controller\handleDeposit;
