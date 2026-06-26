@@ -35,7 +35,7 @@ do {
             handleCreateWallet($wallets);
             break;
         case '2':
-            echo "Option 'Faire Dépôt' sélectionnée (Fonctionnalité en cours de développement...)\n\n";
+            handleDeposit($wallets, $transactions);
             break;
         case '3':
             echo "Option 'Faire Retrait' sélectionnée (Fonctionnalité en cours de développement...)\n\n";

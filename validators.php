@@ -29,3 +29,8 @@ function isWalletValueUnique(string $value, string $field, array $wallets): bool
 {
     return findWalletByField($value, $field, $wallets) === null;
 }
+
+function isAmountStrictlyPositive(float $amount): bool
+{
+    return $amount > 0;
+}
