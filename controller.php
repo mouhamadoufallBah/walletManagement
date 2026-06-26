@@ -1,4 +1,17 @@
 <?php
+namespace App\Controller;
+
+use function App\Validator\isRequiredFieldEmpty;
+use function App\Validator\isValidPhoneNumber;
+use function App\Validator\isWalletValueUnique;
+use function App\Validator\isValidCodeLength;
+use function App\Validator\isNumericCode;
+use function App\Validator\isBalanceValid;
+use function App\Validator\isAmountStrictlyPositive;
+use function App\Services\createWallet;
+use function App\Services\executeDeposit;
+use function App\Services\executeWithdraw;
+use function App\Repository\getAllTransactions;
 
 function handleCreateWallet(array &$wallets): void
 {

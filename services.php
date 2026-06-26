@@ -1,4 +1,11 @@
 <?php
+namespace App\Services;
+
+use function App\Repository\saveWallet;
+use function App\Repository\findWalletIndexByPhone;
+use function App\Repository\updateWalletBalance;
+use function App\Repository\saveTransaction;
+use function App\Validator\hasSufficientFunds;
 
 function createWallet(array $newWallet, array &$wallets): bool
 {

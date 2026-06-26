@@ -1,4 +1,7 @@
 <?php
+namespace App\Validator;
+
+use function App\Repository\findWalletByField;
 
 function isRequiredFieldEmpty(string $value): bool
 {

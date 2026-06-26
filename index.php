@@ -4,6 +4,11 @@ require_once 'validators.php';
 require_once 'services.php';
 require_once 'controller.php';
 
+use function App\Controller\handleCreateWallet;
+use function App\Controller\handleDeposit;
+use function App\Controller\handleWithdraw;
+use function App\Controller\handleListTransactions;
+
 $wallets = [
     [
         'client' => 'Idy',
