@@ -5,6 +5,7 @@ use function App\Controller\handleCreateWallet;
 use function App\Controller\handleDeposit;
 use function App\Controller\handleWithdraw;
 use function App\Controller\handleListTransactions;
+use function App\Controller\handleListWallets;
 
 $wallets = [
     [
@@ -28,6 +29,7 @@ do {
     echo "2 - Faire Dépôt\n";
     echo "3 - Faire Retrait\n";
     echo "4 - Lister les Transactions\n";
+    echo "5 - Lister les wallets\n";
     echo "0 - Quitter\n";
 
     $choix = trim(readline("Votre choix : "));
@@ -44,6 +46,9 @@ do {
             break;
         case '4':
             handleListTransactions($transactions, $wallets);
+            break;
+        case '5':
+            handleListWallets($wallets);
             break;
         case '0':
             echo "Au revoir !\n";

@@ -12,6 +12,7 @@ use function App\Services\createWallet;
 use function App\Services\executeDeposit;
 use function App\Services\executeWithdraw;
 use function App\Repository\getAllTransactions;
+use function App\Repository\getAllWallets;
 
 function handleCreateWallet(array &$wallets): void
 {
@@ -176,4 +177,19 @@ function handleListTransactions(array $transactions, array $wallets): void
     }
     
     echo "==================================================================\n\n";
+}
+
+function handleListWallets(array $wallets): void
+{
+    echo "\n==================================================\n";
+    echo "Client \t\t | Téléphone \t | Solde \n";
+    echo "==================================================\n";
+
+    $list = getAllWallets($wallets);
+
+    foreach ($list as $wallet) {
+        echo "{$wallet['client']} \t\t | {$wallet['telephone']} \t | {$wallet['solde']} CFA\n";
+    }
+    
+    echo "==================================================\n\n";
 }
