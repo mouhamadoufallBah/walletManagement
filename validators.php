@@ -34,3 +34,8 @@ function isAmountStrictlyPositive(float $amount): bool
 {
     return $amount > 0;
 }
+
+function hasSufficientFunds(float $currentBalance, float $totalRequired): bool
+{
+    return $currentBalance >= $totalRequired;
+}

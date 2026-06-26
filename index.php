@@ -38,7 +38,7 @@ do {
             handleDeposit($wallets, $transactions);
             break;
         case '3':
-            echo "Option 'Faire Retrait' sélectionnée (Fonctionnalité en cours de développement...)\n\n";
+            handleWithdraw($wallets, $transactions);
             break;
         case '4':
             echo "Option 'Lister les Transactions' sélectionnée (Fonctionnalité en cours de développement...)\n\n";
