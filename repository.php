@@ -34,3 +34,8 @@ function saveTransaction(array $transaction, array &$transactions): void
 {
     $transactions[] = $transaction;
 }
+
+function getAllTransactions(array $transactions): array
+{
+    return $transactions;
+}
