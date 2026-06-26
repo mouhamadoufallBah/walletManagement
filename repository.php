@@ -8,22 +8,17 @@ function saveWallet(array $newWallet, array &$wallets): void
 
 function findWalletByField(string $value, string $field, array $wallets): ?array
 {
-    foreach ($wallets as $wallet) {
-        if ($wallet[$field] === $value) {
-            return $wallet;
-        }
-    }
-    return null;
+    $result = array_filter($wallets, function ($wallet) use ($value, $field) {
+        return $wallet[$field] === $value;
+    });
+
+    return $result ? array_shift($result) : null;
 }
 
 function findWalletIndexByPhone(string $phone, array $wallets): int
 {
-    foreach ($wallets as $index => $wallet) {
-        if ($wallet['telephone'] === $phone) {
-            return $index;
-        }
-    }
-    return -1;
+    $index = array_search($phone, array_column($wallets, 'telephone'));
+    return $index !== false ? $index : -1;
 }
 
 function updateWalletBalance(int $index, float $newBalance, array &$wallets): void
