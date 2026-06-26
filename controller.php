@@ -109,3 +109,40 @@ function handleDeposit(array &$wallets, array &$transactions): void
     executeDeposit($phone, (float)$amount, $wallets, $transactions);
     echo "=== Dépôt effectué avec succès ! ===\n\n";
 }
+
+function handleWithdraw(array &$wallets, array &$transactions): void
+{
+    echo "\n============== OPÉRATION DE RETRAIT ==============\n";
+
+    do {
+        $phone = trim(readline("Veuillez saisir le numéro de téléphone du client : "));
+
+        if (isRequiredFieldEmpty($phone)) {
+            echo "Erreur : Le numéro de téléphone est obligatoire.\n";
+            continue;
+        }
+        if (isWalletValueUnique($phone, 'telephone', $wallets)) {
+            echo "Erreur : Aucun wallet n'est associé à ce numéro de téléphone.\n";
+            continue;
+        }
+        break;
+    } while (true);
+
+    do {
+        $amount = trim(readline("Veuillez saisir le montant à retirer : "));
+
+        if ($amount === "" || !is_numeric($amount) || !isAmountStrictlyPositive((float)$amount)) {
+            echo "Erreur : Le montant doit être un nombre strictement positif.\n";
+            continue;
+        }
+        break;
+    } while (true);
+
+    $success = executeWithdraw($phone, (float)$amount, $wallets, $transactions);
+
+    if ($success) {
+        echo "=== Retrait effectué avec succès ! ===\n\n";
+    } else {
+        echo "Erreur : Solde insuffisant pour couvrir le retrait et les frais.\n\n";
+    }
+}
